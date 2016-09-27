@@ -18,27 +18,27 @@ int main() {
 	assert(*p == 0);
 
 	p = p + 3;
-	assert(*p == 0);
+	assert(*p == 3);
 
 	unsigned char a = *p++;
-	assert(a == 0);
-	assert(*p == 0);
+	assert(a == 3);
+	assert(*p == 4);
 
 	unsigned char b = *(p++);
-	assert(b == 0);
-	assert(*p == 0);
+	assert(b == 4);
+	assert(*p == 5);
 
 	// Would love to deal with the 'endianness' of the memory.
 	// Not sure I can
 	unsigned char c = *++p;
-	assert(c == 0);
-	assert(*p == 0);
+	assert(c == 6);
+	assert(*p == 6);
 
 	// Sure you can - cast and display the hex value
 	// but how would you simulate the memory?
 	unsigned char *np = p + 3;
-	assert(*np == 0);
-	assert(*p == 0);
+	assert(*np == 9);
+	assert(*p == 6);
 
 	//Let's setup an integer pointer
 	unsigned int *intP = (unsigned int*) originalPointer;
