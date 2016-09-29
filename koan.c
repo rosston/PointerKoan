@@ -45,25 +45,25 @@ int main() {
 
 	// Hint remember your processors Endianness
 	// Also you should probably do these as hex
-	assert(*intP == 0x00000000);
+	assert(*intP == 0x03020100);
 
 	intP = intP + 3;
-	assert(*intP == 0x00000000);
+	assert(*intP == 0x0f0e0d0c);
 
 	intP = (unsigned int *)((unsigned char *) (intP) + 3);
-	assert(*intP == 0x00000000);
+	assert(*intP == 0x1211100f);
 
 	unsigned int intX = *intP--;
-	assert(intX == 0x00000000);
-	assert(*intP == 0x00000000);
+	assert(intX == 0x1211100f);
+	assert(*intP == 0x0e0d0c0b);
 
 	unsigned int *subtractedP = intP - 1;
-	assert(*subtractedP == 0x00000000);
-	assert(intP - subtractedP == 0);
+	assert(*subtractedP == 0x0a090807);
+	assert(intP - subtractedP == 1);
 
 	// Obscure C trick
 	intP = (unsigned int*) originalPointer;
-	assert(3[intP] == 0x00000000);
+	assert(3[intP] == 0x0f0e0d0c);
 
 	puts("Congrats you did it!  You must know your pointers");
 	return 0;
